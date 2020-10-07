@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/todo-list-react/static/css/main.876b92cf.chunk.css",
+    "main.js": "/todo-list-react/static/js/main.ccb96591.chunk.js",
+    "main.js.map": "/todo-list-react/static/js/main.ccb96591.chunk.js.map",
+    "runtime-main.js": "/todo-list-react/static/js/runtime-main.dc5b2452.js",
+    "runtime-main.js.map": "/todo-list-react/static/js/runtime-main.dc5b2452.js.map",
+    "static/js/2.0a5b052f.chunk.js": "/todo-list-react/static/js/2.0a5b052f.chunk.js",
+    "static/js/2.0a5b052f.chunk.js.map": "/todo-list-react/static/js/2.0a5b052f.chunk.js.map",
+    "index.html": "/todo-list-react/index.html",
+    "precache-manifest.cab030b14d13656470788906194f4daa.js": "/todo-list-react/precache-manifest.cab030b14d13656470788906194f4daa.js",
+    "service-worker.js": "/todo-list-react/service-worker.js",
+    "static/css/main.876b92cf.chunk.css.map": "/todo-list-react/static/css/main.876b92cf.chunk.css.map",
+    "static/js/2.0a5b052f.chunk.js.LICENSE.txt": "/todo-list-react/static/js/2.0a5b052f.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/todo-list-react/static/media/Inter-Regular.7c539936.woff",
+    "static/media/deleteicon.fbef1739.svg": "/todo-list-react/static/media/deleteicon.fbef1739.svg",
+    "static/media/duplicateicon.50621d26.svg": "/todo-list-react/static/media/duplicateicon.50621d26.svg",
+    "static/media/editicon.4cc2e748.svg": "/todo-list-react/static/media/editicon.4cc2e748.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dc5b2452.js",
+    "static/js/2.0a5b052f.chunk.js",
+    "static/css/main.876b92cf.chunk.css",
+    "static/js/main.ccb96591.chunk.js"
+  ]
+}
