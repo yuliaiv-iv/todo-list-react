@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import TodoItem from './TodoItem';
 import { todos as todosList } from '../utils/todos.js';
 import TaskStatus from './TaskStatus';
+
 
 
 
@@ -11,6 +12,8 @@ function Section() {
     const [inputValue, setInputValue] = React.useState('');
     const [buttonValue, setButtonValue] = React.useState('Добавить');
     const [selectedId, setSelectedId] = React.useState('');
+    const [status, setStatus] = React.useState('All');
+    const [filtered, setFiltered] = React.useState([]);
 
     function handleInputChange(event) {
         setInputValue(event.target.value)
@@ -57,7 +60,6 @@ function Section() {
         setInputValue(text)
         setButtonValue('Сохранить');
         setSelectedId(id)
-        console.log(text, id)
     }
 
     function toggleTaskCompleted(id) {
@@ -70,7 +72,35 @@ function Section() {
         setTodos(updatedTasks);
     }
 
-console.log(todos)
+    function handleStatus(event) {
+        setStatus(event.target.value)
+    }
+
+    function handleFilter() {
+        switch(status) {
+            case 'complited':
+                setFiltered(todos.filter(todo => todo.completed === true));
+                break;
+            case 'uncomplited':
+                setFiltered(todos.filter(todo => todo.completed === false));
+                break;
+            default:
+                setFiltered(todos);
+                break;
+        }
+    };
+    console.log(filtered)
+
+    React.useEffect(() => {
+        handleFilter();
+    }, [todos, status]);
+
+    // function handelCheckBox() {
+    //     if(todo.completed === true) {
+            
+    //     }
+    // }
+
     return (
         <section className="todos">
             <form name="todo-form" className="todos__form" onSubmit={handleSubmit}>
@@ -89,14 +119,13 @@ console.log(todos)
                     {buttonValue}
                 </button>
             </form>
-            <TaskStatus
-            name={'Все'} />
-            <TaskStatus
-            name={'Выполнено'} />
-            <TaskStatus
-            name={'Невыполнено'} />
+            <TaskStatus 
+                onStatus={handleStatus} 
+                value={status} 
+                onChange={handleFilter}
+                />
             <ul className="todos__list">
-                {todos.map(todo => <TodoItem {...todo}
+                {filtered.map(todo => <TodoItem {...todo}
                     key={todo.id}
                     id={todo.id}
                     todo={todo}
@@ -105,7 +134,7 @@ console.log(todos)
                     onDuplicate={handleDuplicateTodo}
                     onEdit={handleEditTodo}
                     onToggle={toggleTaskCompleted}
-                    //completed={}
+                    filtered={filtered}
                 />)}
             </ul>
         </section>

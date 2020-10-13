@@ -22,11 +22,17 @@ function TodoItem(props) {
         props.onToggle(props.id)
     }
 
+    function handleCheckBox(event) {
+        props.onCheck(event)
+    }
+
     return (
         <li className="todo" id={props.id}>
             <input type="checkbox" 
                     className="todo__checkbox" 
-                    onChange={handleToggle}/>
+                    onChange={handleToggle}
+                    defaultChecked={handleCheckBox}
+                    />
             <p className="todo__text">{props.todo.text}</p>
             <button className="todo__btn todo__btn_type_edit button"
                     title="Добавить"
