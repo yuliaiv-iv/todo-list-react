@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import TodoItem from './TodoItem';
 import { todos as todosList } from '../utils/todos.js';
 import TaskStatus from './TaskStatus';
@@ -10,17 +10,21 @@ function Section() {
 
     const [todos, setTodos] = React.useState(todosList);
     const [inputValue, setInputValue] = React.useState('');
-    const [buttonValue, setButtonValue] = React.useState('Добавить');
+    const [buttonValue, setButtonValue] = React.useState('Add');
     const [selectedId, setSelectedId] = React.useState('');
     const [status, setStatus] = React.useState('All');
     const [filtered, setFiltered] = React.useState([]);
+
+    React.useEffect(() => {
+        handleFilter();
+    }, [todos, status]);
 
     function handleInputChange(event) {
         setInputValue(event.target.value)
     }
     function handleSubmit(event) {
         event.preventDefault();
-        if (buttonValue === 'Добавить') {
+        if (buttonValue === 'Add') {
             setTodos([...todos, {
                 id: Date.now(),
                 text: inputValue,
@@ -41,7 +45,7 @@ function Section() {
             });
             setTodos(editedTodo);
             setInputValue('');
-            setButtonValue('Добавить')
+            setButtonValue('Add')
         }
     }
 
@@ -58,7 +62,7 @@ function Section() {
     }
     function handleEditTodo(text, id) {
         setInputValue(text)
-        setButtonValue('Сохранить');
+        setButtonValue('Save');
         setSelectedId(id)
     }
 
@@ -77,7 +81,7 @@ function Section() {
     }
 
     function handleFilter() {
-        switch(status) {
+        switch (status) {
             case 'complited':
                 setFiltered(todos.filter(todo => todo.completed === true));
                 break;
@@ -89,17 +93,6 @@ function Section() {
                 break;
         }
     };
-    console.log(filtered)
-
-    React.useEffect(() => {
-        handleFilter();
-    }, [todos, status]);
-
-    // function handelCheckBox() {
-    //     if(todo.completed === true) {
-            
-    //     }
-    // }
 
     return (
         <section className="todos">
@@ -107,7 +100,7 @@ function Section() {
                 <input type="text"
                     name="todo"
                     className="todos__input"
-                    placeholder="Следующее дело..."
+                    placeholder="Next task..."
                     onChange={handleInputChange}
                     value={inputValue}
                     required
@@ -119,11 +112,11 @@ function Section() {
                     {buttonValue}
                 </button>
             </form>
-            <TaskStatus 
-                onStatus={handleStatus} 
-                value={status} 
+            <TaskStatus
+                onStatus={handleStatus}
+                value={status}
                 onChange={handleFilter}
-                />
+            />
             <ul className="todos__list">
                 {filtered.map(todo => <TodoItem {...todo}
                     key={todo.id}
@@ -135,6 +128,7 @@ function Section() {
                     onEdit={handleEditTodo}
                     onToggle={toggleTaskCompleted}
                     filtered={filtered}
+                    isChecked={todo.completed}
                 />)}
             </ul>
         </section>

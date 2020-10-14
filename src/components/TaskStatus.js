@@ -8,15 +8,14 @@ function TaskStatus(props) {
 
     return (
         <>
-        <div className="todo__status">
-            <h2 className="todo__title">Текущее состояние дел</h2>
-            <select onChange={handleStatusClick} name="total" className="todo__dropdown">
-                <option value="all" className="todo__option">All</option>
-                <option value="complited" className="todo__option">Complited</option>
-                <option value="uncomplited" className="todo__option">Uncomplited</option>
-            </select>
-        </div>
-        {/* <h3 className="todo__desc">Всего {props.allPosts} записей, из них выполненно {props.done}</h3> */}
+            <div className="todo__status">
+                <h2 className="todo__title">Current tasks status</h2>
+                <select onChange={handleStatusClick} name="total" className="todo__dropdown">
+                    <option value="all" className="todo__option">All</option>
+                    <option value="complited" className="todo__option">Complited</option>
+                    <option value="uncomplited" className="todo__option">Uncomplited</option>
+                </select>
+            </div>
         </>
     );
 }

@@ -5,7 +5,6 @@ import { DuplicateButton } from '../images';
 
 function TodoItem(props) {
 
-
     function handleDeleteClick() {
         props.onDelete(props.todo)
     }
@@ -22,31 +21,28 @@ function TodoItem(props) {
         props.onToggle(props.id)
     }
 
-    function handleCheckBox(event) {
-        props.onCheck(event)
-    }
-
     return (
         <li className="todo" id={props.id}>
-            <input type="checkbox" 
-                    className="todo__checkbox" 
-                    onChange={handleToggle}
-                    defaultChecked={handleCheckBox}
-                    />
+            <input type="checkbox"
+                className="todo__checkbox"
+                onChange={handleToggle}
+                checked={props.isChecked}
+
+            />
             <p className="todo__text">{props.todo.text}</p>
             <button className="todo__btn todo__btn_type_edit button"
-                    title="Добавить"
-                    onClick={handleEditClick}>
+                title="Edit"
+                onClick={handleEditClick}>
                 <EditButton />
             </button>
             <button className="todo__btn todo__btn_type_duplicate button"
-                    onClick={handleDuplicateClick}
-                    title="Копировать">
+                onClick={handleDuplicateClick}
+                title="Copy">
                 <DuplicateButton />
             </button>
             <button className="todo__btn todo__btn_type_delete button"
-                    onClick={handleDeleteClick}
-                    title="Удалить">
+                onClick={handleDeleteClick}
+                title="Remove">
                 <DeleteButton />
             </button>
         </li>
