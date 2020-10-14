@@ -62,7 +62,7 @@ function Section() {
     }
     function handleEditTodo(text, id) {
         setInputValue(text)
-        setButtonValue('Save');
+        setButtonValue('');
         setSelectedId(id)
     }
 
@@ -82,10 +82,10 @@ function Section() {
 
     function handleFilter() {
         switch (status) {
-            case 'complited':
+            case 'completed':
                 setFiltered(todos.filter(todo => todo.completed === true));
                 break;
-            case 'uncomplited':
+            case 'uncompleted':
                 setFiltered(todos.filter(todo => todo.completed === false));
                 break;
             default:
